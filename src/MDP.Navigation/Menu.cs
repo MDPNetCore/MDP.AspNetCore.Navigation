@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MDP.Navigation
 {
-    public class Menu : IValidatableObject
+    public partial class Menu : IValidatableObject
     {
         // Properties
         public string ParentMenuId { get; set; }
@@ -26,8 +26,10 @@ namespace MDP.Navigation
         public string ActionUri { get; set; }
 
         public string ResourceUri { get; set; }
+    }
 
-
+    public partial class Menu : IValidatableObject
+    {
         // Methods
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
