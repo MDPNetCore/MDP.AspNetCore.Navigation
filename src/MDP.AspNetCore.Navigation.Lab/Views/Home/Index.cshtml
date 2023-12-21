@@ -1,0 +1,38 @@
+﻿@using MDP.Navigation;
+@functions {
+    void RenderMenuNode(List<MenuNode> menuNodeList)
+    {
+        <ul>
+            @foreach (var menuNode in menuNodeList)
+            {
+                <li>
+                    @* MenuNode *@
+                    @Html.Raw($"({menuNode.Priority}){menuNode.Name}")
+                    
+                    @* Children *@
+                    @if (menuNode.Children.Any() == true)
+                    {
+                        RenderMenuNode(menuNode.Children);
+                    }
+                </li>
+            }
+        </ul>
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MDP.AspNetCore.Navigation.Lab</title>
+</head>
+<body>
+
+    <!--Title-->
+    <h2>MDP.AspNetCore.Navigation.Lab</h2>
+    <hr />
+
+    <!--MenuNodeList-->
+    @{RenderMenuNode(ViewBag.MenuNodeList);}
+</body>
+</html>
