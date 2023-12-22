@@ -34,7 +34,7 @@ namespace MDP.AspNetCore.Navigation
             {
                 // MenuList
                 var menuList = setting.Menus;
-                setting.Menus.ForEach(o => Validator.ValidateObject(o, new ValidationContext(o)));
+                menuList.ForEach(o => Validator.ValidateObject(o, new ValidationContext(o)));
 
                 // Register
                 applicationBuilder.Services.AddTransient<MenuRepository>((serviceProvider) =>

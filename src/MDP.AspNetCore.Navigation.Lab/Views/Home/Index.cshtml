@@ -1,25 +1,7 @@
 ﻿@using MDP.Navigation;
-@functions {
-    void RenderMenuNode(List<MenuNode> menuNodeList)
-    {
-        <ul>
-            @foreach (var menuNode in menuNodeList)
-            {
-                <li>
-                    @* MenuNode *@
-                    @Html.Raw($"({menuNode.Priority}){menuNode.Name}")
-                    
-                    @* Children *@
-                    @if (menuNode.Children.Any() == true)
-                    {
-                        RenderMenuNode(menuNode.Children);
-                    }
-                </li>
-            }
-        </ul>
-    }
-}
+@{
 
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +14,28 @@
     <h2>MDP.AspNetCore.Navigation.Lab</h2>
     <hr />
 
-    <!--MenuNodeList-->
-    @{RenderMenuNode(ViewBag.MenuNodeList);}
+    <!--MenuNodeList-->    
+    @functions {
+        void RenderMenuNode(List<MenuNode> menuNodeList, int level = 0)
+        {
+            <ul>
+                @foreach (var menuNode in menuNodeList)
+                {
+                    <li>
+                        @* MenuNode *@
+                        @Html.Raw($"({menuNode.Priority}){menuNode.Name}")
+
+                        @* Children *@
+                        @if (menuNode.Children.Any() == true)
+                        {
+                            RenderMenuNode(menuNode.Children, level + 1);
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    }
+    @{ RenderMenuNode(ViewBag.MenuNodeList); }
+
 </body>
 </html>

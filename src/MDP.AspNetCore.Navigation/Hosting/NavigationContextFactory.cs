@@ -26,7 +26,7 @@ namespace MDP.AspNetCore.Navigation
 
             #endregion
 
-            // RoleAccessContext
+            // NavigationContext
             {
                 // Register
                 applicationBuilder.Services.TryAddSingleton<NavigationContext>();

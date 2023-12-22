@@ -1,8 +1,7 @@
-﻿using MDP.Navigation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace MDP.RoleAccesses
+namespace MDP.Navigation
 {
     [MDP.Registration.Service<MenuNodeRepository>()]
     public class EmptyMenuNodeRepository : MenuNodeRepository
